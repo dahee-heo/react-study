@@ -1,6 +1,10 @@
 import Header from './components/Header.js';
 import Nav from './components/Nav.js';
 import Footer from './components/Footer.js';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import Members from './components/contents/Members.js';
+import Search from './components/contents/Search.js';
+
 
 function App() {
   return (
@@ -20,10 +24,17 @@ function App() {
         <Nav></Nav>
         <hr />
         <section className="contents">
-          <div>
+          {/* <div>
             <h3>Members</h3>
             <p>Contents</p>
-          </div>
+          </div> */}
+          <BrowserRouter>
+            <Switch>
+              <Route exact={true} path="/members" component={Members} />
+              <Route exact={true} path="/search" component={props => <Search {...props} testProps={true} />} />
+              <Redirect to={{pathname: "/members"}} />
+            </Switch>
+          </BrowserRouter>
         </section>
         <hr />
       </div>
