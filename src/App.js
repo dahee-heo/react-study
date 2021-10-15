@@ -8,7 +8,7 @@ import Search from './components/contents/Search.js';
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       {/* <header>
         <h1>React study</h1>
       </header> */}
@@ -28,19 +28,17 @@ function App() {
             <h3>Members</h3>
             <p>Contents</p>
           </div> */}
-          <BrowserRouter>
-            <Switch>
-              <Route exact={true} path="/members" component={Members} />
-              <Route exact={true} path="/search" component={props => <Search {...props} testProps={true} />} />
-              <Redirect to={{pathname: "/members"}} />
-            </Switch>
-          </BrowserRouter>
+          <Switch>
+            <Route exact={true} path="/members" component={Members} />
+            <Route exact={true} path="/search" component={props => <Search {...props} testProps={true} />} />
+            <Redirect to={{pathname: "/members"}} />
+          </Switch>
         </section>
         <hr />
       </div>
       {/* <footer>Copyright</footer> */}
       <Footer></Footer>
-    </div>
+    </BrowserRouter>
   );
 }
 
