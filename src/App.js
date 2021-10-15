@@ -1,18 +1,23 @@
+import Header from './components/Header.js';
+import Nav from './components/Nav.js';
+import Footer from './components/Footer.js';
 
 function App() {
   return (
     <div>
-      <header>
+      {/* <header>
         <h1>React study</h1>
-      </header>
+      </header> */}
+      <Header></Header>
       <hr />
       <div className="container">
-        <nav className="nav">
+        {/* <nav className="nav">
           <ul>
             <li><h2>Members</h2></li>
             <li><h2>Search</h2></li>
           </ul>
-        </nav>
+        </nav> */}
+        <Nav></Nav>
         <hr />
         <section className="contents">
           <div>
@@ -22,7 +27,8 @@ function App() {
         </section>
         <hr />
       </div>
-      <footer>Copyright</footer>
+      {/* <footer>Copyright</footer> */}
+      <Footer></Footer>
     </div>
   );
 }
