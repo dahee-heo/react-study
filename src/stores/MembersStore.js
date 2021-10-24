@@ -28,14 +28,12 @@ export default class MembersStore {
   }
 
   membersRead() {
-    this.members = [{
-      name: '홍길동',
-      age: 20
-    }, {
-      name: '춘향이',
-      age: 16
-    }];
-    console.log('Done membersRead', this.members);
+    axios.get('http://localhost:3100/api/v1/members').then((response) => {
+      console.log('Done membersRead', response);
+      this.members = response.data.members;
+    }).catch((error) => {
+      axiosError(error);
+    });
   }
 
   membersUpdate(index, member) {
