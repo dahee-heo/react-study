@@ -1,4 +1,6 @@
 import { configure, makeAutoObservable } from 'mobx';
+import axios from 'axios';
+import { axiosError } from './common.js';
 
 configure({
   enforceActions: 'never',
@@ -17,11 +19,12 @@ export default class MembersStore {
   };
 
   membersCreate() {
-    this.members.push({
-      name: this.member.name,
-      age: this.member.age
+    axios.post('http://localhost:3100/api/v1/members', this.member).then((response) => {
+      console.log('Done membersCreate', response);
+      this.membersRead();
+    }).catch((error) => {
+      axiosError(error);
     });
-    console.log('Done membersCreate', this.members);
   }
 
   membersRead() {
@@ -39,7 +42,7 @@ export default class MembersStore {
     this.members[index] = member;
     console.log('Done membersUpdate', this.members);
   }
-  
+
   membersDelete(index) {
     this.members.splice(index, 1);
     console.log('Done membersDelete', this.members);
