@@ -40,7 +40,7 @@ function Members(props) {
               </td>
               <td>
                 <button onClick={() => membersStore.membersUpdate(index, member)}>Update</button>
-                <button>Delete</button>
+                <button onClick={() => membersStore.membersDelete(index)}>Delete</button>
               </td>
             </tr>
           ))}
