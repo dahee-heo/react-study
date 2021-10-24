@@ -26,10 +26,20 @@ function Members(props) {
           <tbody>
           {members.map((member, index) => (
             <tr key={index}>
-              <td>{member.name}</td>
-              <td>{member.age}</td>
               <td>
-                <button>Update</button>
+                <input
+                  type="text" placeholder="Name" value={member.name}
+                  onChange={event => {member.name = event.target.value}}
+                />
+              </td>
+              <td>
+                <input
+                  type="text" placeholder="Age" value={member.age}
+                  onChange={event => {member.age = event.target.value}}
+                />
+              </td>
+              <td>
+                <button onClick={() => membersStore.membersUpdate(index, member)}>Update</button>
                 <button>Delete</button>
               </td>
             </tr>
