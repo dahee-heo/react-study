@@ -2,16 +2,24 @@ import { useState, useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 
 function Search(props) {
-  const { membersStore, searchStore } = props;
+  console.log(props)
+  const searchParams = new URLSearchParams(props.location.search);
+  const spSearch = searchParams.get('q') || '';
+  const { membersStore, searchStore, history } = props;
   const { members } = membersStore;
   const [ q, setQ ] = useState('');
   const searchRead = (event) => {
     event.preventDefault();
-    searchStore.searchRead(q);
+    // searchStore.searchRead(q);
+    history.push(`/search?q=${q}`);
   };
+  // useEffect(() => {
+  //   searchStore.searchRead('');
+  // }, [searchStore]);
   useEffect(() => {
-    searchStore.searchRead('');
-  }, [searchStore]);
+    searchStore.searchRead(spSearch);
+    setQ(spSearch);
+  }, [searchStore, spSearch]);  
   return (
     <div>
       <h3>Search</h3>
