@@ -19,7 +19,7 @@ export default class MembersStore {
   };
 
   membersCreate() {
-    axios.post('http://localhost:3100/api/v1/members', this.member).then((response) => {
+    axios.post('/api/v1/members', this.member).then((response) => {
       console.log('Done membersCreate', response);
       this.membersRead();
     }).catch((error) => {
@@ -28,7 +28,7 @@ export default class MembersStore {
   }
 
   membersRead() {
-    axios.get('http://localhost:3100/api/v1/members').then((response) => {
+    axios.get('/api/v1/members').then((response) => {
       console.log('Done membersRead', response);
       this.members = response.data.members;
     }).catch((error) => {
@@ -37,7 +37,7 @@ export default class MembersStore {
   }
 
   membersUpdate(index, member) {
-    axios.patch('http://localhost:3100/api/v1/members/' + index, member).then((response) => {
+    axios.patch('/api/v1/members/' + index, member).then((response) => {
       console.log('Done membersUpdate', response);
       this.membersRead();
     }).catch((error) => {
@@ -46,7 +46,7 @@ export default class MembersStore {
   }
 
   membersDelete(index) {
-    axios.delete('http://localhost:3100/api/v1/members/' + index).then((response) => {
+    axios.delete('/api/v1/members/' + index).then((response) => {
       console.log('Done membersDelete', response);
       this.membersRead();
     }).catch((error) => {

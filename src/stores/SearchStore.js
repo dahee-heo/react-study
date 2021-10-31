@@ -9,7 +9,7 @@ export default class SearchStore {
   }
 
   searchRead(q) {
-    const url = `http://localhost:3100/api/v1/search?q=${q}`;
+    const url = `/api/v1/search?q=${q}`;
     axios.get(url).then((response) => {
       console.log('Done searchRead', response);
       membersStore.members = response.data.members;
